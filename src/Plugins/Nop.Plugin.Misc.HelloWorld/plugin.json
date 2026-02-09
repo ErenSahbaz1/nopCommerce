@@ -1,0 +1,11 @@
+{
+  "Group": "Misc",
+  "FriendlyName": "Hello World Plugin",
+  "SystemName": "Misc.HelloWorld",
+  "Version": "1.0.0",
+  "SupportedVersions": ["5.00"],
+  "Author": "Eren Sahbaz",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.HelloWorld.dll",
+  "Description": "A simple Hello World plugin to learn NopCommerce plugin development."
+}

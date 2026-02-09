@@ -26,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Exclude CLDR temp files from dotnet watch to prevent file deletion loop -->
+    <Watch Remove="wwwroot\lib_npm\cldr-data\main\temp\**\*" />
+    
     <!-- We copy the entire \App_Data directory. But we ignore JSON files and data protection keys  -->
     <Content Include="App_Data\**" CopyToPublishDirectory="PreserveNewest" Exclude="App_Data\*.json" />
     <Content Remove="App_Data\*.json" />

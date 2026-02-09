@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- This tells .NET we're building for .NET 9.0 -->
+    <TargetFramework>net9.0</TargetFramework>
+    
+    <!-- Basic information about your plugin -->
+    <Copyright>Copyright © Eren sahbaz</Copyright>
+    <Company>Düzey AŞ</Company>
+    <Authors>Eren Sahbaz</Authors>
+    
+    <!-- Where to output the compiled plugin DLL -->
+    <!-- NopCommerce expects plugins in Presentation\Nop.Web\Plugins\{Group}.{Name} -->
+    <OutputPath>..\..\Presentation\Nop.Web\Plugins\Misc.HelloWorld</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    
+    <!-- Don't append net9.0 to the output path -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    
+    <!-- Enables implicit using statements (C# 10+ feature) -->
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- Tell the build system to include plugin.json in the output -->
+  <ItemGroup>
+    <None Remove="plugin.json" />
+    <None Remove="Views\Configure.cshtml" />
+    <None Remove="Views\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="plugin.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Configure.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Reference to the core NopCommerce libraries -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Nop.Core\Nop.Core.csproj" />
+    <ProjectReference Include="..\..\Libraries\Nop.Services\Nop.Services.csproj" />
+    <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
+  </ItemGroup>
+
+  <!-- This clears any extra files from plugin output folder during build -->
+  <ItemGroup>
+    <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
+  </ItemGroup>
+
+  <!-- This target executes after "Build" target -->
+  <Target Name="NopTarget" AfterTargets="Build">
+    <!-- Delete unnecessary libraries from plugins path -->
+    <MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(OutDir)" Targets="NopClear" />
+  </Target>
+
+</Project>
