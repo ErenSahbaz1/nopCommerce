@@ -26,6 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols" Version="8.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <!-- Exclude CLDR temp files from dotnet watch to prevent file deletion loop -->
     <Watch Remove="wwwroot\lib_npm\cldr-data\main\temp\**\*" />
     

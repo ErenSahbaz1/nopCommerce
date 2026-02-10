@@ -1,0 +1,11 @@
+{
+  "Group": "API",
+  "FriendlyName": "Mobile API",
+  "SystemName": "Api.Mobile",
+  "Version": "1.0.0",
+  "SupportedVersions": ["5.00"],
+  "Author": "Eren",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Api.Mobile.dll",
+  "Description": "Mobile API plugin (JWT auth + orders endpoints)"
+}
