@@ -26,4 +26,9 @@ public class MobileApiSettings : ISettings
     /// JWT token expiration time in minutes
     /// </summary>
     public int JwtExpirationMinutes { get; set; } = 1440; // 24 hours
+
+    /// <summary>
+    /// API Key for mobile app authentication
+    /// </summary>
+    public string ApiKey { get; set; } = "your-secret-api-key-here";
 }
