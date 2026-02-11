@@ -1,0 +1,59 @@
+@* filepath: c:\Users\dj_er\Documents\ehb\internship\repo's\nopCommerce\src\Plugins\Nop.Plugin.Api.Mobile\Views\Configure.cshtml *@
+@model Nop.Plugin.Api.Mobile.Models.ConfigurationModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+<form asp-controller="MobileApiConfig" asp-action="Configure" method="post">
+    <div class="cards-group">
+        <div class="card card-default">
+            <div class="card-header">
+                Mobile API Settings
+            </div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label asp-for="ApiKey">API Key</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input asp-for="ApiKey" class="form-control" />
+                        <span class="hint">The API key required in X-Api-Key header</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label asp-for="JwtSecretKey">JWT Secret Key</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input asp-for="JwtSecretKey" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label asp-for="JwtIssuer">JWT Issuer</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input asp-for="JwtIssuer" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label asp-for="JwtAudience">JWT Audience</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input asp-for="JwtAudience" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label asp-for="JwtExpirationMinutes">Token Expiration (minutes)</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input asp-for="JwtExpirationMinutes" class="form-control" type="number" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

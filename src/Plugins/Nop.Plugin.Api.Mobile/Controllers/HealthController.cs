@@ -8,6 +8,13 @@ namespace Nop.Plugin.Api.Mobile.Controllers;
 [Route("api/mobile/[controller]")]
 public class HealthController : BasePluginController
 {
+    private readonly MobileApiSettings _settings;
+
+    public HealthController(MobileApiSettings settings)
+    {
+        _settings = settings;
+    }
+
     [HttpGet("ping")]
     public IActionResult Ping()
     {
@@ -17,5 +24,15 @@ public class HealthController : BasePluginController
             name = "Mobile API",
             time = DateTime.UtcNow
         }));
+    }
+
+    // Temporary debug endpoint - remove after testing!
+    [HttpGet("debug-key")]
+    public IActionResult DebugKey()
+    {
+        return Ok(new { 
+            apiKeyLength = _settings.ApiKey?.Length ?? 0,
+            apiKeyPreview = _settings.ApiKey?.Substring(0, Math.Min(3, _settings.ApiKey?.Length ?? 0)) + "***"
+        });
     }
 }

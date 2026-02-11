@@ -55,9 +55,9 @@ public class MobileApiPlugin : BasePlugin, IMiscPlugin
         await base.UninstallAsync();
     }
 
-    public override string GetConfigurationPageUrl()
+   public override string GetConfigurationPageUrl()
     {
-        return $"{_webHelper.GetStoreLocation()}Admin/MobileApi/Configure";
+        return $"{_webHelper.GetStoreLocation()}Admin/MobileApiConfig/Configure";
     }
 
     private static string GenerateSecretKey()
